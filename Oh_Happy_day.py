@@ -78,12 +78,13 @@ smtpObj.ehlo()
 smtpObj.starttls()
 
 #Login to Gmail account
-smtpObj.login('ruokjohn@gmail.com', 'analunatics')
+smtpObj.login('ruokjohn@gmail.com', 'Put Pass Here: Slack Channel')
 
 #send a test email
 smtpObj.sendmail('ruokjohn@gmail.com', 'jtm3@g.clemson.edu', 
              'Subject: Tomorrow\'s Forecast! \nLooks like it is going to be %s Tomorrow!\n%s' % (condition, tempText))
-smtpObj.sendmail('ruokjohn@gmail.com', '3364135724@vtext.com', 
+smtpObj.sendmail('ruokjohn@gmail.com', 
+                 #'John's Number Here @vtext.com', 
              'Looks like it is going to be %s Tomorrow!\n%s' % (condition, tempText))
 #close the SMTP connetion
 smtpObj.quit()
