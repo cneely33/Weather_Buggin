@@ -87,8 +87,8 @@ smtpObj.quit()
 ################################################
 ######## Start SMS Portion of Project ##########
 ################################################
-#accountSID = 'AC488a7f4ec2b893663a363167dbff1981'
-#authToken = 'e7439822fab45eabe82ab33724b9f418'
+accountSID = getenv('twil_account')
+authToken = getenv('twil_auth')
 
 #twilioCli = TwilioRestClient(accountSID, authToken)
 
