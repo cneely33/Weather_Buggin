@@ -4,29 +4,25 @@ Created on Tue Jul  5 20:49:40 2016
 
 @author: Christopher
 """
-import smtplib, requests, bs4#, time, datetime
+import smtplib, requests, bs4
+from os import getenv
+#import time, datetime
 #from twilio.rest import TwilioRestClient
+from mods.secrets import secrets
 
-#### Setting loop to run the program constantly ####
-#while True:
-#### messing with day counters to control the frequency of loop ####
-   # day0 = datetime.datetime.now()
-    #day1 = datetime.timedelta(days=1)
-    #offset = day0 + day1
-    
-   # while day0 < offset:
-    
-    #jamar's zip code is 21046
+secrets.load_env_vars()
+
+# zip code is 21046
 from lxml import html
 
-#jamar's zip code is 21046
+#zip code is 21046
 res = requests.get('http://forecast.weather.gov/MapClick.php?lat=39.17512184649712&lon=-76.84004571823453')
 
 #Check to see if the download worked
 try:
     res.raise_for_status()
 except Exception as exc:
-    print('There was a problem: %s' % (exc))
+    print('There was a problem: {exc}'.format(exc=exc))
 
 ###check the type of the request
 #type(res)
@@ -78,14 +74,13 @@ smtpObj.ehlo()
 smtpObj.starttls()
 
 #Login to Gmail account
-smtpObj.login('ruokjohn@gmail.com', 'Put Pass Here: Slack Channel')
+smtpObj.login('ruokjohn@gmail.com', getenv('analytics_pass'))
 
 #send a test email
 smtpObj.sendmail('ruokjohn@gmail.com', 'jtm3@g.clemson.edu', 
-             'Subject: Tomorrow\'s Forecast! \nLooks like it is going to be %s Tomorrow!\n%s' % (condition, tempText))
-smtpObj.sendmail('ruokjohn@gmail.com', 
-                 #'John's Number Here @vtext.com', 
-             'Looks like it is going to be %s Tomorrow!\n%s' % (condition, tempText))
+             'Subject: Tomorrow\'s Forecast! \nLooks like it is going to be {condition} Tomorrow!\n{tempText}'.format(condition=condition, tempText=tempText))
+smtpObj.sendmail('ruokjohn@gmail.com', '3364135724@vtext.com', 
+             'Looks like it is going to be {condition} Tomorrow! \n{tempText}'.format(condition=condition, tempText=tempText))
 #close the SMTP connetion
 smtpObj.quit()
 
@@ -102,9 +97,4 @@ smtpObj.quit()
 
 #message = twilioCli.messages.create(body='\nLooks like it is going to be %s Tomorrow!\n%s' % (condition, tempText), 
                                 #from_=myTwilioNumber, to=myCellPhone)    
-
-##### Putting a timer at the end of the program to hold the loop still for 24 hours ####
-
-#for i in range(86400):
-    #time.sleep(1)
 
