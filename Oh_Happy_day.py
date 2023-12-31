@@ -49,15 +49,15 @@ tempInt = int(tempRaw[6:8])
 
 
 if tempInt >= 90:
-    tempText = "Phew! It's going to be %s degrees tomorrow! That's almost as hot as Neely! Stay hydrated!" % tempStr
+    tempText = "Phew! It's going to be %s degrees tomorrow! Stay hydrated!" % tempStr
 elif tempInt > 70 and tempInt < 90:
-    tempText = "Tomorrow is going to be a steamy %s degrees! You're a big, tough boy though! You can handle that!" % tempStr
+    tempText = "Tomorrow is going to be a steamy %s degrees! " % tempStr
 elif tempInt > 50 and tempInt < 70:
-    tempText = "It's going to be a lovely %s degrees tomorrow! If only you had friends to go outside and enjoy they day with." % tempStr
+    tempText = "It's going to be a lovely %s degrees tomorrow! " % tempStr
 elif tempInt > 30 and tempInt < 50:
-    tempText = "It's going to be a chilly %s degrees tomorrow! Bring a light coat with you!" % tempStr
+    tempText = "It's going to be a chilly %s degrees tomorrow! " % tempStr
 elif tempInt < 30:
-    tempText = "Buuurrrr! It's going to be %s degrees tomorrow! Your micro is going to be smaller than ever!" % tempStr
+    tempText = "Buuurrrr! It's going to be %s degrees tomorrow! " % tempStr
 
 
 ################################################
